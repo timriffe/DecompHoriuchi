@@ -1,0 +1,4 @@
+export(DecompContinuous)
+export(DecompContinuousOrig)
+export(R0)
+export(R0vec)
