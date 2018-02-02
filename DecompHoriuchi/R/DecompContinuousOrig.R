@@ -33,7 +33,7 @@
 #' is usually sufficient. This ought to be able to handle a very wide variety of functions. 
 #' 
 #' @return returns \code{effectmat}, a matrix of the variable effects that is organized in the same way as 
-#' \code{rates1} and \code{rates2}. Variables across columns and ages down rows. \code{sum(effectmat)} 
+#' \code{rates1} and \code{rates2}. \code{sum(effectmat)} 
 #' ought to approximate \code{func(rates2)-func(rates1)}.
 #' 
 #' @references Horiuchi, Wilmoth and Pletcher (2008) A Decomposition Method Based on a Model of 
