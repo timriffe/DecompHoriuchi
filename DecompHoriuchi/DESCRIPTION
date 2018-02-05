@@ -1,15 +1,16 @@
 Package: DecompHoriuchi
 Type: Package
-Title: A function to approximate the continuous decomposition method proposed
-    by Horiuchi et al (2008).
-Version: 1.11
-Date: Jan 24, 2013
+Title: Approximate the continuous decomposition method proposed
+    by Horiuchi et al (2008), and another for comparison.
+Version: 2.0
+Date: Feb 5, 2018
 Author: Tim Riffe
 Maintainer: Tim Riffe <tim.riffe@gmail.com>
 Description: This package contains two functions for continuous decomposition.
     One, a direct R translation of the Matlab code offered by Horiuchi et al
     (2008) (DecompContinuousOrig()), and another a slightly friendlier but less
-    flexible implementation (DecompContinuous).
+    flexible implementation (DecompContinuous). We also have an implementation 
+    of Andreev et al's 2002 stepwise replacement decomposition.
 License: GPL-2
 LazyLoad: yes
 Collate:
@@ -17,3 +18,4 @@ Collate:
     'DecompContinuousOrig.R'
     'R0.R'
     'R0vec.R'
+RoxygenNote: 6.0.1

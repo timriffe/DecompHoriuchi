@@ -177,5 +177,5 @@ Mxc2e0abrvec <- function(Mxcvec, dims, trans = FALSE){
 #' @format A matrix with 19 rows and 6 columns
 
 #' @source \url{https://www.demogr.mpg.de/en/projects_publications/publications_1904/mpidr_technical_reports/an_excel_spreadsheet_for_the_decomposition_of_a_difference_between_two_values_of_an_aggregate_4591.htm}
-"Comparison"
+"Compare"
 
