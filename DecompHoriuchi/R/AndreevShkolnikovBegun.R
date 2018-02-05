@@ -85,8 +85,16 @@ stepwise_replacement <- function(func, rates1, rates2, symmetrical = TRUE, direc
 }
 
 #' @title an abridged lifetable based on M(x)
+#' @description Implements the abridged lifetable formulas given in the supplementary material to Andreev et al (2012). An entire lifetable is calculated, but only lfie expectancy at birth is returned.
+#' @details Chiang's a(x) is assumed in the following way: \eqn{a(0) = 0.07 + 1.7 * M(0)}, \eqn{a(1) = 1.6}, \eqn{a(\omega) = \frac{1}{M(\omega)}}, and all others are assumed at mid interval. The last age is assumed open. Everything else is pretty standard.
+#' @param Mx numeric vector of abridged mortality rates.
+#' @param Age integer, abrdged age lower bounds. 
+#' @param radix numeric. Can be anything positive.
+#' @references E. Andreev, V. Shkolnikov, and A. Begun (2002) Algorithm for decomposition of differences between aggregate demographic measures and its application to life expectancies, healthy life expectancies, parity-progression ratios and total fertility rates. Demographic Research v7, n14
 #' 
-#' 
+#' E. Andreev, V. Shkolnikov, and A. Begun (2012) An Excel spreadsheet for the decomposition of a difference between two values of an aggregate demographic measure by stepwise replacement running from young to old ages. MPIDR Technical Report TR-2012-002
+#' @export
+#' @return numeric life expectancy at birth
 LTabr <- function(Mx, Age = c(0,1,cumsum(rep(5,length(Mx)-2))),radix = 1e5){
 	# based on lifetable formulas in Spreadsheet:
 	# Andreev & Shkolnikov (2012) An Excel spreadsheet for the 
@@ -118,10 +126,24 @@ LTabr <- function(Mx, Age = c(0,1,cumsum(rep(5,length(Mx)-2))),radix = 1e5){
 	ex[1]
 }
 
+#' @title get life expectancy at birth from an (abridged)age-cause matrix
+#' @description Given a matrix with abridged ages in rows and causes of death in columns, then calculate life expectancy at birth using \code{LTabr()}.
+#' @details This assumes that the marginal row sums give all-cause mortality rates. Give an other category if you need to top-up to all-cause mortality. Do not include all-cause mortality itself!
+#' @param Mxc numeric matrix
+#' @return numeric life expectancy at birth
+#' @export
 Mxc2e0abr <- function(Mxc){
 	Mx <- rowSums(Mxc)
 	LTabr(Mx)
 }
+#' @title get life expectancy at birth from the vec of an age-cause matrix
+#' @description Given a vector with abridged ages stacked within causes of death, assign its dimensions, take the age marginal sums using \code{Mxc2e0abr}, then calculate life expectancy at birth using \code{LTabr()}.
+#' @details This assumes that the marginal row sums give all-cause mortality rates. Give an other category if you need to top-up to all-cause mortality. Do not include all-cause mortality itself! \code{length(Mxcvec)} must equal \code{prod(dim(Mxc))}. This function is meant to be fed to a generic decomposition function, such as \code{stepwise_replacement()}, or \code{DecompContinuousOrig()}.
+#' @param Mxcvec numeric vector, \code{c(Mxc)}.
+#' @param dims integer vector of length two, \code{c(nrow(Mxc),ncol(Mxc))}.
+#' @param trans do we need to transpose in order to arrive back to an age-cause matrix?
+#' @return numeric life expectancy at birth
+#' @export
 Mxc2e0abrvec <- function(Mxcvec, dims, trans = FALSE){
 	dim(Mxcvec) <- dims
 	if (trans){
@@ -129,3 +151,31 @@ Mxc2e0abrvec <- function(Mxcvec, dims, trans = FALSE){
 	}
 	Mxc2e0abr(Mxcvec)
 }
+
+#' Year 2002 death rates by cause for US males in abridged age classes
+#'
+#' A matrix containing death rates for six causes (one of which is other) for abrdged age classes 0-85. Ages are labelled in rows, and causes in column names.
+#'
+#' @format A matrix with 19 rows and 6 columns
+
+#' @source \url{https://www.demogr.mpg.de/en/projects_publications/publications_1904/mpidr_technical_reports/an_excel_spreadsheet_for_the_decomposition_of_a_difference_between_two_values_of_an_aggregate_4591.htm}
+"Mxc1"
+
+#' Year 2002 death rates by cause for England and Wales males in abridged age classes
+#'
+#' A matrix containing death rates for six causes (one of which is other) for abrdged age classes 0-85. Ages are labelled in rows, and causes in column names.
+#'
+#' @format A matrix with 19 rows and 6 columns
+
+#' @source \url{https://www.demogr.mpg.de/en/projects_publications/publications_1904/mpidr_technical_reports/an_excel_spreadsheet_for_the_decomposition_of_a_difference_between_two_values_of_an_aggregate_4591.htm}
+"Mxc2"
+
+#' Comparison decomposition results by age and cause
+#'
+#' A matrix containing the contributions to the difference in life expectancy at birth between 2002 US males and England and Wales males. Ages (in rows) are in abridged categories, 0-85, and there are six causes, including other, in columns. The sum of the matrix is the difference in life expectancy at birth between the two populations. Values are based on symmetrical stepwise replacement from young to old ages only. This is just to make sure implementation is close.
+#'
+#' @format A matrix with 19 rows and 6 columns
+
+#' @source \url{https://www.demogr.mpg.de/en/projects_publications/publications_1904/mpidr_technical_reports/an_excel_spreadsheet_for_the_decomposition_of_a_difference_between_two_values_of_an_aggregate_4591.htm}
+"Comparison"
+
