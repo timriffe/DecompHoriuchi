@@ -17,7 +17,7 @@ Download the [zip ball](https://github.com/timriffe/DecompHoriuchi/zipball/maste
 # install.packages("devtools")
 
 library(devtools)
-install_github("DecompHoriuchi", subdir = "DecompHoriuchi", username = "timriffe")
+install_github("timriffe/DecompHoriuchi/DecompHoriuchi")
 ```
 
 **Note**: Windows users need [Rtools](http://cran.r-project.org/bin/windows/Rtools/) to install from github as shown above. Get the most recent version of [R for Windows](http://cran.r-project.org/bin/windows/base/) and download and install the version of Rtools that corresponds to it.
