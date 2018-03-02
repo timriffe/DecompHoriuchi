@@ -44,8 +44,6 @@ stepwise_replacement <- function(func, rates1, rates2, symmetrical = TRUE, direc
 	RM_2_1_up            <- RM_1_2_up
 	RM_2_1_down          <- RM_1_2_up
 	
-	RatesMat_down        <- RatesMatascend
-	
 	# based on 1-> 2 upward
 	r1ind                     <- lower.tri(Rates1Mat, TRUE)
 	r2ind                     <- upper.tri(Rates1Mat)
