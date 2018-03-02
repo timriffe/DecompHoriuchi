@@ -2,8 +2,8 @@ Package: DecompHoriuchi
 Type: Package
 Title: Approximate the continuous decomposition method proposed
     by Horiuchi et al (2008), and another for comparison.
-Version: 2.0
-Date: Feb 5, 2018
+Version: 2.1
+Date: March 2, 2018
 Author: Tim Riffe
 Maintainer: Tim Riffe <tim.riffe@gmail.com>
 Description: This package contains two functions for continuous decomposition.
