@@ -69,8 +69,8 @@
 #' segments(seq(from=0,to=90,by=10),0,seq(from=0,to=90,by=10),-.027,lty=2,col="grey")
 #' text(seq(from=0,to=90,by=10),-.027,seq(from=0,to=90,by=10),pos=1,xpd=T)
 #' legend("bottomright",fill=c("yellow","green"),legend=c("contrib from change in Lx",
-#' "contrib from change in #' Fx"),title="age specific contrib of changes in Fx and Lx",bg="white") }
-#' 
+#' "contrib from change in #' Fx"),title="age specific contrib of changes in Fx and Lx",bg="white") 
+#' }
 #' @export  
 
 DecompContinuous <-

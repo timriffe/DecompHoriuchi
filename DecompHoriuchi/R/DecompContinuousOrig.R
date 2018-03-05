@@ -4,7 +4,7 @@
 #' the supplementary material given here: http://www.demog.berkeley.edu/~jrw/Papers/decomp.suppl.pdf. The 
 #' difference between \code{DecompContinuous()} and this function is that \code{DecompContinuousOrig} takes 
 #' \code{rates1} and \code{rates2} as single vectors, rather than as matrices, and output is also returned as a
-#' matrix. This difference makes the function more flexible, but may add a step when writing the function to
+#' vector. This difference makes the function more flexible, but may add a step when writing the function to
 #' be decomposed. See examples.  
 #' 
 #' @param func A function specified by the user. This must be able to take the vectors \code{rates1} or 

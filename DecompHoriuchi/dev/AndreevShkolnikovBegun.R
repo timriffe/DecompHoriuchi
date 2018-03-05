@@ -339,3 +339,8 @@ matplot(dec2, type = 'l',add=TRUE)
 #matplot(dec4.1, type = 'l')
 #matplot(dec5.1, type = 'l')
 #matplot(dec6.1, type = 'l')
+
+library(devtools)
+setwd("/home/tim/git/DecompHoriuchi")
+document("DecompHoriuchi")
+
