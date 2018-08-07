@@ -3,6 +3,13 @@ DecompHoriuchi
 
 R implementation of Horiuchi's proposal for continuous decomposition
 
+Superceded by [DemoDecomp](https://github.com/timriffe/DemoDecomp)
+========================
+
+`DecompHoriuchi` will no longer be maintained. I changed the name to `DemoDecomp` because the package now contains two general methods, so it didn't make sense to name for just one of them. I also took the chance to modernize the repo a bit with automatic checks. These methods really are applicable to diverse analyses, so I'd like to demonstrate some out-of-the-box applications to give a sense.
+
+The main changes from `DecompHoriuchi` to `DemoDecomp` are that the arguments `rates1` and `rates2` are now `pars1` and `pars2`, respectively. i.e. we're not always decomposing rates, no why not make it more general? Also the only Horiuchi function here is `DecompContinuousOrig()` (the one taking all parameters in a single vector), and it has been renamed to `horiuchi()`. Less typing that way. For now all examples the same. `DecompHoriuchi` will remain here in this state for the foreseeable future, and any new developments will happen in `DemoDecomp`.
+
 Installation
 ============
 
